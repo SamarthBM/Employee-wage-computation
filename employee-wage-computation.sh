@@ -32,7 +32,7 @@ total_working_days=0
 total_working_hours=0
 total_wage=0
 
-echo "Daily wage:		Total wage:"
+echo "Day:		Daily wage:		Total wage:"
 
 while [ $total_working_hours -lt $max_hours -a $total_working_days -lt $max_days ]
 do
@@ -47,5 +47,5 @@ do
 	daily_wage=$(($working_hour*$wage_per_hour))
 	total_wage=$((total_wage+$daily_wage))
 	wage[$daily_wage]=$total_wage
-	echo " $daily_wage			$total_wage"
+	echo "$total_working_days		 $daily_wage			$total_wage"
 done
