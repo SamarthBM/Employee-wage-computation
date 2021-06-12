@@ -1,7 +1,16 @@
 #!/bin/bash -x
 echo "Welcome to Employee wage computation"
 
-attendance=$((RANDOM%3))
+max_hours=100
+max_days=20
+
+total_working_days=0
+total_working_hours=0
+
+while [ $total_working_hours -lt $max_hours -a $total_working_days -lt $max_days ]
+do
+	(( total_working_days++ ))
+	attendance=$((RANDOM%3))
 
 case $attendance in
 	0)	echo "Employee is absent"
@@ -15,11 +24,9 @@ case $attendance in
 		working_hour=4
 		 ;;
 esac
+		total_working_hours=$((total_working_hours+$working_hour))
+done
 wage_per_hour=20
-num_of_days=20
 
-wage_per_day=$(($wage_per_hour*$working_hour))
-echo "wage per day of employee is $wage_per_day"
-
-wage_for_month=$(($wage_per_day*$num_of_days))
-echo "Wage of employee for a month is $wage_for_month"
+total_wage=$(($total_working_hours*$wage_per_hour))
+echo "Total wage is $total_wage"
